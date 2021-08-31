@@ -1,0 +1,120 @@
+/* GLOBALES */
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+/* INPUT */
+
+.ingreso {
+  width: 50%;
+  height: 20vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  margin-top: 20px;
+}
+
+.cardIngreso {
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: initial;
+}
+
+.cardIngreso h3 {
+  font-weight: 600;
+}
+
+.formIngreso {
+  width: 100%;
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formGasto {
+  width: 100%;
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  font-size: 2rem;
+  font-weight: 500;
+  border-radius: 50px;
+}
+
+/* JARS */
+
+.jarrones {
+  width: 50%;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenedorJarron {
+  width: 100%;
+  height: 30vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  text-transform: uppercase;
+  border: black solid 1px;
+  border-radius: 50px;
+  margin: 5px;
+}
+
+.botonJarron {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* LIST */
+
+.lista {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  margin-top: 20px;
+}
+
+.listaIngreso {
+  width: 100%;
+  font-size: 1.5rem;
+  color: white;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.listaGasto {
+  width: 100%;
+  font-size: 1.5rem;
+  color: white;
+  text-align: center;
+}
+.lista p {
+  font-size: 1.5rem;
+}
