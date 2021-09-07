@@ -47,11 +47,11 @@ function imprimirJarrones(valor, indice) {
 
 function guardarIngreso(e) {
   e.preventDefault(); // hace que no se refresque la pagina cada vez que apretamos el submit del formulario
-
+  let fechaIngreso = document.querySelector("#fechaIngreso").value;
   let montoIngreso = Number(document.querySelector("#montoIngreso").value);
   let descIngreso = document.querySelector("#descripcionIngreso").value;
 
-  todoIngreso.unshift({ montoIngreso, descIngreso });
+  todoIngreso.unshift({ fechaIngreso, montoIngreso, descIngreso });
 
   jarrones.map((valor, indice) => {
     valor.valorTotalDisponible =
@@ -65,12 +65,12 @@ function guardarIngreso(e) {
 
 function guardarGasto(e) {
   e.preventDefault(); // hace que no se refresque la pagina cada vez que apretamos el submit del formulario
-
+  let fechaGasto = document.querySelector("#fechaGasto").value;
   let montoGasto = Number(document.querySelector("#montoGasto").value);
   let descGasto = document.querySelector("#descripcionGasto").value;
   let jarron = document.querySelector("#jarron").value;
 
-  todoGasto.unshift({ montoGasto, descGasto, jarron });
+  todoGasto.unshift({ fechaGasto, montoGasto, descGasto, jarron });
 
   jarrones[jarron].valorTotalDisponible =
     jarrones[jarron].valorTotalDisponible - montoGasto;
@@ -87,9 +87,9 @@ function imprimirGastos() {
     if (indice > 9) {
       return;
     }
-    htmlListaGasto += `<p  class="alert alert-danger" role="alert"> Descripcion : ${
-      valor.descGasto
-    }  Monto: $${valor.montoGasto}  Jarron: ${
+    htmlListaGasto += `<p  class="alert alert-danger" role="alert"> Fecha : ${
+      valor.fechaGasto
+    } Descripcion : ${valor.descGasto}  Monto: $${valor.montoGasto}  Jarron: ${
       jarrones[valor.jarron].nombre
     }</p> `;
   });
@@ -105,7 +105,7 @@ function imprimirIngresos() {
       return;
     }
 
-    htmlListaIngreso += `<p class="alert alert-success" role="alert"> Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
+    htmlListaIngreso += `<p class="alert alert-success" role="alert"> Fecha : ${valor.fechaIngreso} Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
   });
 
   listaIngreso.innerHTML = htmlListaIngreso;
