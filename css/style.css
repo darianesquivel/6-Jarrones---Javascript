@@ -84,6 +84,16 @@ body {
   margin: 1px;
 }
 
+.tituloJarron {
+  display: flex;
+  align-items: center;
+}
+
+.imgJarron {
+  height: 45px;
+  display: flex;
+}
+
 /* LIST */
 
 .lista {

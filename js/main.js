@@ -1,10 +1,10 @@
 document
   .querySelector("#formIngreso")
-  .addEventListener("submit", guardarIngreso);
+  .addEventListener("submit", guardarIngreso); // Detecta click boton de ingresos y ejecuta la funcion guardarIngreso
 
-document.querySelector("#formGasto").addEventListener("submit", guardarGasto);
+document.querySelector("#formGasto").addEventListener("submit", guardarGasto); // Detecta click boton de gastos y ejecuta la funcion guardarGasto
 
-window.addEventListener("load", cargarPagina); // al cargar la pagina
+window.addEventListener("load", cargarPagina); // Cuando carga la pagina, ejecuta las funciones imprimirOption y imprimirJarrones
 
 let jarrones = [
   { nombre: "Necesidades", valorTotalDisponible: 0, porcentaje: 55 },
@@ -17,8 +17,6 @@ let jarrones = [
 
 let todoIngreso = []; // Array con ingresos y descripciones
 let todoGasto = []; // Array con gastos y descripciones
-let sumaJarroNecesidades = 0;
-let sumaJarroEducacion = 0;
 
 function cargarPagina() {
   jarrones.map(imprimirOption);
@@ -32,7 +30,9 @@ function imprimirOption(valor, indice) {
 function imprimirJarrones(valor, indice) {
   contenedorJarrones.innerHTML += ` <div class="contenedorJarron">
 <div class="tituloJarron">
+<img class="imgJarron" src="img/j${indice}.png">
   <h3>${valor.nombre}</h3>
+  
 </div>
 <div class="montoJarron">
   <h3 id="valor${indice}">$${valor.valorTotalDisponible.toFixed(2)}</h3>
