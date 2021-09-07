@@ -116,7 +116,7 @@ body {
 @media (max-width: 600px) {
   .ingreso {
     width: 100%;
-    height: 350px;
+    height: 410px;
     flex-direction: column;
     gap: 10px;
   }
