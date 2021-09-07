@@ -71,7 +71,6 @@ function guardarGasto(e) {
   let jarron = document.querySelector("#jarron").value;
 
   todoGasto.unshift({ montoGasto, descGasto, jarron });
-  console.log(todoGasto);
 
   jarrones[jarron].valorTotalDisponible =
     jarrones[jarron].valorTotalDisponible - montoGasto;
@@ -88,9 +87,11 @@ function imprimirGastos() {
     if (indice > 9) {
       return;
     }
-    htmlListaGasto += `<p> Descripcion : ${valor.descGasto}  Monto: $${
-      valor.montoGasto
-    }  Jarron: ${jarrones[valor.jarron].nombre}</p> `;
+    htmlListaGasto += `<p  class="alert alert-danger" role="alert"> Descripcion : ${
+      valor.descGasto
+    }  Monto: $${valor.montoGasto}  Jarron: ${
+      jarrones[valor.jarron].nombre
+    }</p> `;
   });
 
   listaGasto.innerHTML = htmlListaGasto;
@@ -104,7 +105,7 @@ function imprimirIngresos() {
       return;
     }
 
-    htmlListaIngreso += `<p> Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
+    htmlListaIngreso += `<p class="alert alert-success" role="alert"> Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
   });
 
   listaIngreso.innerHTML = htmlListaIngreso;
