@@ -71,7 +71,7 @@ body {
 }
 
 .contenedorJarron {
-  width: 100%;
+  width: 90%;
   height: 50px;
   color: white;
   background-color: rgb(29, 29, 29);
@@ -132,6 +132,10 @@ body {
   }
 
   .cardIngreso {
+    width: 100%;
+  }
+
+  .contenedorJarron {
     width: 100%;
   }
 }
