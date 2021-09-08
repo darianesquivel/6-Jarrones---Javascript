@@ -177,6 +177,7 @@ function imprimirGastos() {
     if (indice > 9) {
       return;
     }
+
     htmlListaGasto += `<p  class="alert alert-danger" role="alert"> Fecha : ${
       valor.fechaGasto
     } Descripcion : ${valor.descGasto}  Monto: $${valor.montoGasto}  Jarron: ${
@@ -186,3 +187,8 @@ function imprimirGastos() {
 
   listaGasto.innerHTML = htmlListaGasto;
 }
+
+$("#paraIngresos").delay(100).fadeIn(2000);
+$("#paraGastos").delay(100).fadeIn(2000);
+$("#contenedorJarrones").delay(1000).fadeIn(2000);
+$("#paraListas").delay(2000).fadeIn(3000);
