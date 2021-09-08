@@ -19,8 +19,77 @@ let todoIngreso = []; // Array con ingresos y descripciones
 let todoGasto = []; // Array con gastos y descripciones
 
 function cargarPagina() {
+  jarronesLocalStorage();
   jarrones.map(imprimirOption);
   jarrones.map(imprimirJarrones);
+  imprimirIngresoLocalStorage();
+  imprimirGastosLocalStorage();
+}
+
+function jarronesLocalStorage() {
+  jarrones = JSON.parse(localStorage.getItem("jarrones"));
+
+  if (jarrones === null) {
+    jarrones = [
+      { nombre: "Necesidades", valorTotalDisponible: 0, porcentaje: 55 },
+      { nombre: "Educacion", valorTotalDisponible: 0, porcentaje: 10 },
+      { nombre: "Ahorro", valorTotalDisponible: 0, porcentaje: 10 },
+      { nombre: "Diversion", valorTotalDisponible: 0, porcentaje: 10 },
+      { nombre: "Inversion", valorTotalDisponible: 0, porcentaje: 10 },
+      { nombre: "Dar", valorTotalDisponible: 0, porcentaje: 5 },
+    ];
+  }
+}
+
+function ingresosLocalStorage() {
+  localStorage.setItem("ingresos", JSON.stringify(todoIngreso));
+}
+
+function gastosLocalStorage() {
+  localStorage.setItem("gastos", JSON.stringify(todoGasto));
+}
+
+function imprimirIngresoLocalStorage() {
+  let htmlListaIngreso = "";
+
+  todoIngreso = JSON.parse(localStorage.getItem("ingresos"));
+
+  if (todoIngreso === null) {
+    todoIngreso = [];
+  }
+
+  todoIngreso.map((valor, indice) => {
+    if (indice > 9) {
+      return;
+    }
+
+    htmlListaIngreso += `<p class="alert alert-success" role="alert"> Fecha : ${valor.fechaIngreso} Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
+  });
+
+  listaIngreso.innerHTML = htmlListaIngreso;
+}
+
+function imprimirGastosLocalStorage() {
+  let htmlListaGasto = "";
+
+  todoGasto = JSON.parse(localStorage.getItem("gastos"));
+
+  if (todoGasto === null) {
+    todoGasto = [];
+  }
+
+  todoGasto.map((valor, indice) => {
+    if (indice > 9) {
+      return;
+    }
+    htmlListaGasto += `<p  class="alert alert-danger" role="alert"> Fecha : ${
+      valor.fechaGasto
+    } Descripcion : ${valor.descGasto}  Monto: $${valor.montoGasto}  Jarron: ${
+      jarrones[valor.jarron].nombre
+    }</p> `;
+  });
+
+  listaGasto.innerHTML = htmlListaGasto;
 }
 
 function imprimirOption(valor, indice) {
@@ -56,10 +125,14 @@ function guardarIngreso(e) {
   jarrones.map((valor, indice) => {
     valor.valorTotalDisponible =
       valor.valorTotalDisponible + (montoIngreso / 100) * valor.porcentaje;
+
+    localStorage.setItem("jarrones", JSON.stringify(jarrones));
+
     let idvalor = document.querySelector(`#valor${indice}`);
     idvalor.innerHTML = `$ ${valor.valorTotalDisponible.toFixed(2)}`;
   });
-
+  0;
+  ingresosLocalStorage();
   imprimirIngresos();
 }
 
@@ -75,10 +148,27 @@ function guardarGasto(e) {
   jarrones[jarron].valorTotalDisponible =
     jarrones[jarron].valorTotalDisponible - montoGasto;
 
+  localStorage.setItem("jarrones", JSON.stringify(jarrones));
+
   let idvalor = document.querySelector(`#valor${jarron}`);
   idvalor.innerHTML = `$ ${jarrones[jarron].valorTotalDisponible.toFixed(2)}`;
 
+  gastosLocalStorage();
   imprimirGastos();
+}
+
+function imprimirIngresos() {
+  let htmlListaIngreso = "";
+
+  todoIngreso.map((valor, indice) => {
+    if (indice > 9) {
+      return;
+    }
+
+    htmlListaIngreso += `<p class="alert alert-success" role="alert">Fecha : ${valor.fechaIngreso} Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
+  });
+
+  listaIngreso.innerHTML = htmlListaIngreso;
 }
 
 function imprimirGastos() {
@@ -95,18 +185,4 @@ function imprimirGastos() {
   });
 
   listaGasto.innerHTML = htmlListaGasto;
-}
-
-function imprimirIngresos() {
-  let htmlListaIngreso = "";
-
-  todoIngreso.map((valor, indice) => {
-    if (indice > 9) {
-      return;
-    }
-
-    htmlListaIngreso += `<p class="alert alert-success" role="alert"> Fecha : ${valor.fechaIngreso} Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
-  });
-
-  listaIngreso.innerHTML = htmlListaIngreso;
 }
