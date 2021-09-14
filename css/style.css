@@ -11,17 +11,16 @@ body {
   background-color: black;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/* TITULO */
-
-.titulo {
-  color: white;
-  text-transform: uppercase;
+.botonesPrincipales {
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  font-weight: 800;
-  margin-top: 10px;
-  visibility: hidden;
+  gap: 5px;
+  width: 50%;
 }
 
 /* INPUT */
@@ -149,6 +148,10 @@ body {
 
   .contenedorJarron {
     width: 100%;
+  }
+
+  .botonesPrincipales {
+    width: 95%;
   }
 }
 
