@@ -13,6 +13,17 @@ body {
   flex-direction: column;
 }
 
+/* TITULO */
+
+.titulo {
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 800;
+  margin-top: 10px;
+  visibility: hidden;
+}
+
 /* INPUT */
 
 .ingreso {

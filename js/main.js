@@ -188,7 +188,30 @@ function imprimirGastos() {
   listaGasto.innerHTML = htmlListaGasto;
 }
 
-$("#paraIngresos").delay(100).fadeIn(2000);
-$("#paraGastos").delay(100).fadeIn(2000);
-$("#contenedorJarrones").delay(1000).fadeIn(2000);
-$("#paraListas").delay(2000).fadeIn(3000);
+// $("body").prepend("<h1 class='titulo' > 6 Jars </h1> ");
+// $("h1").toggle(3000).show(3000);
+
+// $("#paraIngresos").delay(100).toggle(2000);
+// $("#paraGastos").delay(100).toggle(2000);
+// $("#contenedorJarrones").delay(1000).toggle(2000);
+// $("#paraListas").delay(2000).toggle(3000);
+
+// $("#agregarIngreso").on("click", function () {
+//   $("#paraIngresos").delay(100).toggle(1000);
+// });
+
+$("#agregarIngreso").on("click", function () {
+  $("#paraIngresos").slideToggle(1000);
+});
+
+$("#agregarGasto").on("click", function () {
+  $("#paraGastos").slideToggle(1000);
+});
+
+$("#verJarrones").on("click", function () {
+  $("#contenedorJarrones").slideToggle(1000);
+});
+
+$("#verIngresos").on("click", function () {
+  $("#paraListas").slideToggle(1000);
+});
