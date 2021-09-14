@@ -17,10 +17,15 @@ body {
 
 .botonesPrincipales {
   display: flex;
+
   flex-direction: column;
   text-align: center;
   gap: 5px;
   width: 50%;
+}
+
+.botonesPrincipales button {
+  text-transform: uppercase;
 }
 
 /* INPUT */
@@ -154,6 +159,10 @@ body {
     width: 95%;
   }
 }
+
+/* .ingreso {
+  display: none;
+} */
 
 #paraIngresos {
   display: none;

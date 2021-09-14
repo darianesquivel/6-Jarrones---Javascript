@@ -189,6 +189,7 @@ function imprimirGastos() {
 }
 
 $("#agregarIngreso").on("click", function () {
+  $(".ingreso").slideDown(100);
   $("#paraGastos")
     .slideUp(100)
     .siblings("#paraIngresos")
@@ -197,6 +198,7 @@ $("#agregarIngreso").on("click", function () {
 });
 
 $("#agregarGasto").on("click", function () {
+  $(".ingreso").slideDown(100);
   $("#paraIngresos")
     .slideUp(100)
     .siblings("#paraGastos")
@@ -205,6 +207,7 @@ $("#agregarGasto").on("click", function () {
 });
 
 $("#verJarrones").on("click", function () {
+  $(".ingreso").slideUp(100);
   $("#contenedorJarrones").slideToggle(1000);
 });
 
