@@ -189,11 +189,19 @@ function imprimirGastos() {
 }
 
 $("#agregarIngreso").on("click", function () {
-  $("#paraIngresos").slideToggle(1000);
+  $("#paraGastos")
+    .slideUp(100)
+    .siblings("#paraIngresos")
+    .delay(100)
+    .slideToggle(500);
 });
 
 $("#agregarGasto").on("click", function () {
-  $("#paraGastos").slideToggle(1000);
+  $("#paraIngresos")
+    .slideUp(100)
+    .siblings("#paraGastos")
+    .delay(100)
+    .slideToggle(500);
 });
 
 $("#verJarrones").on("click", function () {
