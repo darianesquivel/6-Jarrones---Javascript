@@ -1,18 +1,30 @@
-const url = "https://www.dolarsi.com/api/api.php?type=valoresprincipales";
-
-fetch(url)
-  .then((res) => res.json())
-  .then((data) => {
-    imprimirDolar(data);
-  })
-  .catch((err) => console.log(err));
-
-function imprimirDolar(data) {
-  const valorDolar = document.querySelector("#dolar");
-
-  valorDolar.innerHTML = `<p class='paraDolar'> DOLAR</p>`;
-  valorDolar.innerHTML += `<p class='paraDolar'>COMPRA : ${data[0].casa.compra} / VENTA : ${data[0].casa.venta}</p>`;
+async function fetchImprimir() {
+  imprimirDolar(null);
+  const dato = await precioDolar();
+  imprimirDolar(dato);
 }
+
+async function precioDolar() {
+  const url = "https://www.dolarsi.com/api/api.php?type=valoresprincipales";
+  const dolar = await fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      return data[0].casa;
+    })
+    .catch((err) => console.log(err));
+
+  return dolar;
+}
+
+const imprimirDolar = (data = null) => {
+  const valorDolar = document.querySelector("#dolar");
+  valorDolar.innerHTML = `<p class='paraDolar'> ${
+    data ? data.nombre : "Cargando..."
+  }</p>`;
+  valorDolar.innerHTML += `<p class='paraDolar'>COMPRA : ${
+    data ? data.compra : "Cargando..."
+  } / VENTA : ${data ? data.venta : "Cargando..."}</p>`;
+};
 
 const alertError = (valor) => {
   Swal.fire({
@@ -83,6 +95,7 @@ const cargarPagina = () => {
   jarrones.map(imprimirJarrones);
   imprimirIngresoLocalStorage();
   imprimirGastosLocalStorage();
+  fetchImprimir();
 };
 
 document
