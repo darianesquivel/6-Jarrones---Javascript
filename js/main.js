@@ -1,3 +1,21 @@
+const alertError = (valor) => {
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: `${valor}`,
+  });
+};
+
+const alertSucc = (valor) => {
+  Swal.fire({
+    // position: 'top-end',
+    icon: "success",
+    title: `${valor}`,
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
+
 const guardarIngreso = (e) => {
   e.preventDefault(); // hace que no se refresque la pagina cada vez que apretamos el submit del formulario
   let fechaIngreso = document.querySelector("#fechaIngreso").value;
@@ -13,10 +31,11 @@ const guardarIngreso = (e) => {
       idvalor.innerHTML = `$ ${valor.valorTotalDisponible.toFixed(2)}`;
     });
     0;
+    alertSucc("Ingreso guardado");
     ingresosLocalStorage();
     imprimirIngresos();
   } else {
-    alert("El ingreso debe ser mayor a 0");
+    alertError("Tu ingreso debe ser mayor a 0");
   }
 };
 
@@ -27,7 +46,7 @@ const guardarGasto = (e) => {
   let descGasto = document.querySelector("#descripcionGasto").value;
   let jarron = document.querySelector("#jarron").value;
 
-  if (montoGasto <= jarrones[jarron].valorTotalDisponible) {
+  if (montoGasto <= jarrones[jarron].valorTotalDisponible && montoGasto > 0) {
     todoGasto.unshift({ fechaGasto, montoGasto, descGasto, jarron });
 
     jarrones[jarron].valorTotalDisponible =
@@ -37,11 +56,13 @@ const guardarGasto = (e) => {
 
     let idvalor = document.querySelector(`#valor${jarron}`);
     idvalor.innerHTML = `$ ${jarrones[jarron].valorTotalDisponible.toFixed(2)}`;
-
+    alertSucc("Gasto guardado");
     gastosLocalStorage();
     imprimirGastos();
+  } else if (montoGasto < 0) {
+    alertError("Tu gasto tiene que ser mayor a 0");
   } else {
-    alert("Fondos insuficientes");
+    alertError("Tus fondos son insuficientes");
   }
 };
 

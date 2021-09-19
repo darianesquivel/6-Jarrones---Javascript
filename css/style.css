@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
-  font-size: 62.5%;
+  /* font-size: 62.5%; */
 }
 
 body {
@@ -53,7 +53,7 @@ body {
 
 .formIngreso {
   width: 100%;
-  font-size: 1.8rem;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -61,14 +61,14 @@ body {
 
 .formGasto {
   width: 100%;
-  font-size: 1.8rem;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .btn {
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: 500;
   border-radius: 5px;
 }
@@ -82,7 +82,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   margin-top: 10px;
 }
 
@@ -103,6 +102,7 @@ body {
 .tituloJarron {
   display: flex;
   align-items: center;
+  font-size: 0.5rem;
 }
 
 .imgJarron {
@@ -110,6 +110,17 @@ body {
   display: flex;
 }
 
+.tituloJarron h3 {
+  font-size: 1rem;
+}
+
+.montoJarron h3 {
+  font-size: 1rem;
+}
+
+.botonJarron h3 {
+  font-size: 1rem;
+}
 /* LIST */
 
 .lista {
@@ -121,7 +132,7 @@ body {
 
 .listaIngreso {
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: white;
   justify-content: space-around;
   text-align: center;
@@ -129,12 +140,12 @@ body {
 
 .listaGasto {
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: white;
   text-align: center;
 }
 .lista p {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 /* MEDIAQUERYS */
