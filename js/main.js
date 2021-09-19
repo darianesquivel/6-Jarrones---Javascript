@@ -35,7 +35,7 @@ const guardarIngreso = (e) => {
     ingresosLocalStorage();
     imprimirIngresos();
   } else {
-    alertError("Tu ingreso debe ser mayor a 0");
+    alertError("Tu ingreso debe ser mayor a $0");
   }
 };
 
@@ -45,22 +45,18 @@ const guardarGasto = (e) => {
   let montoGasto = Number(document.querySelector("#montoGasto").value);
   let descGasto = document.querySelector("#descripcionGasto").value;
   let jarron = document.querySelector("#jarron").value;
-
   if (montoGasto <= jarrones[jarron].valorTotalDisponible && montoGasto > 0) {
     todoGasto.unshift({ fechaGasto, montoGasto, descGasto, jarron });
-
     jarrones[jarron].valorTotalDisponible =
       jarrones[jarron].valorTotalDisponible - montoGasto;
-
     localStorage.setItem("jarrones", JSON.stringify(jarrones));
-
     let idvalor = document.querySelector(`#valor${jarron}`);
     idvalor.innerHTML = `$ ${jarrones[jarron].valorTotalDisponible.toFixed(2)}`;
     alertSucc("Gasto guardado");
     gastosLocalStorage();
     imprimirGastos();
   } else if (montoGasto < 0) {
-    alertError("Tu gasto tiene que ser mayor a 0");
+    alertError("Tu gasto tiene que ser mayor a $0");
   } else {
     alertError("Tus fondos son insuficientes");
   }
@@ -96,7 +92,6 @@ let todoGasto = []; // Array con gastos y descripciones
 
 const jarronesLocalStorage = () => {
   jarrones = JSON.parse(localStorage.getItem("jarrones"));
-
   if (jarrones === null) {
     jarrones = [
       { nombre: "Necesidades", valorTotalDisponible: 0, porcentaje: 55 },
@@ -157,8 +152,7 @@ const imprimirJarrones = (valor, indice) => {
 <div class="tituloJarron">
 <img class="imgJarron" src="img/j${indice}.png">
   <h3>${valor.nombre}</h3>
-  
-</div>
+  </div>
 <div class="montoJarron">
   <h3 id="valor${indice}">$${valor.valorTotalDisponible.toFixed(2)}</h3>
 </div>
@@ -172,15 +166,12 @@ const imprimirJarrones = (valor, indice) => {
 
 const imprimirIngresos = () => {
   let htmlListaIngreso = "";
-
   todoIngreso.map((valor, indice) => {
     if (indice > 9) {
       return;
     }
-
     htmlListaIngreso += `<p class="alert alert-success" role="alert">Fecha : ${valor.fechaIngreso} Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
   });
-
   listaIngreso.innerHTML = htmlListaIngreso;
 };
 
@@ -190,14 +181,12 @@ const imprimirGastos = () => {
     if (indice > 9) {
       return;
     }
-
     htmlListaGasto += `<p  class="alert alert-danger" role="alert"> Fecha : ${
       valor.fechaGasto
     } Descripcion : ${valor.descGasto}  Monto: $${valor.montoGasto}  Jarron: ${
       jarrones[valor.jarron].nombre
     }</p> `;
   });
-
   listaGasto.innerHTML = htmlListaGasto;
 };
 
