@@ -1,3 +1,19 @@
+const url = "https://www.dolarsi.com/api/api.php?type=valoresprincipales";
+
+fetch(url)
+  .then((res) => res.json())
+  .then((data) => {
+    imprimirDolar(data);
+  })
+  .catch((err) => console.log(err));
+
+function imprimirDolar(data) {
+  const valorDolar = document.querySelector("#dolar");
+
+  valorDolar.innerHTML = `<p class='paraDolar'> DOLAR</p>`;
+  valorDolar.innerHTML += `<p class='paraDolar'>COMPRA : ${data[0].casa.compra} / VENTA : ${data[0].casa.venta}</p>`;
+}
+
 const alertError = (valor) => {
   Swal.fire({
     icon: "error",
@@ -8,7 +24,6 @@ const alertError = (valor) => {
 
 const alertSucc = (valor) => {
   Swal.fire({
-    // position: 'top-end',
     icon: "success",
     title: `${valor}`,
     showConfirmButton: false,
@@ -216,3 +231,7 @@ $("#verJarrones").on("click", function () {
 $("#verIngresos").on("click", function () {
   $("#paraListas").slideToggle(1000);
 });
+
+//eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM2MDg2MTMsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJkYXJpYW5lc3F1aXZlbGZAZ21haWwuY29tIn0.ImBOy3votnt1X9_n4qEROS2Hf5Xuw1-bhVBKDc1mY3Ru4Z7GGOnOSa5uowoaiPH_Qdh-69SkJBT5bmjZdNcghQ
+
+//Authorization: BEARER eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM2MDg2MTMsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJkYXJpYW5lc3F1aXZlbGZAZ21haWwuY29tIn0.ImBOy3votnt1X9_n4qEROS2Hf5Xuw1-bhVBKDc1mY3Ru4Z7GGOnOSa5uowoaiPH_Qdh-69SkJBT5bmjZdNcghQ

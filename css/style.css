@@ -148,6 +148,12 @@ body {
   font-size: 1rem;
 }
 
+.paraDolar {
+  color: white;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
 /* MEDIAQUERYS */
 
 @media (max-width: 600px) {
