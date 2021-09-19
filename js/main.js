@@ -120,20 +120,24 @@ function guardarIngreso(e) {
   let montoIngreso = Number(document.querySelector("#montoIngreso").value);
   let descIngreso = document.querySelector("#descripcionIngreso").value;
 
-  todoIngreso.unshift({ fechaIngreso, montoIngreso, descIngreso });
+  if (montoIngreso > 0) {
+    todoIngreso.unshift({ fechaIngreso, montoIngreso, descIngreso });
 
-  jarrones.map((valor, indice) => {
-    valor.valorTotalDisponible =
-      valor.valorTotalDisponible + (montoIngreso / 100) * valor.porcentaje;
+    jarrones.map((valor, indice) => {
+      valor.valorTotalDisponible =
+        valor.valorTotalDisponible + (montoIngreso / 100) * valor.porcentaje;
 
-    localStorage.setItem("jarrones", JSON.stringify(jarrones));
+      localStorage.setItem("jarrones", JSON.stringify(jarrones));
 
-    let idvalor = document.querySelector(`#valor${indice}`);
-    idvalor.innerHTML = `$ ${valor.valorTotalDisponible.toFixed(2)}`;
-  });
-  0;
-  ingresosLocalStorage();
-  imprimirIngresos();
+      let idvalor = document.querySelector(`#valor${indice}`);
+      idvalor.innerHTML = `$ ${valor.valorTotalDisponible.toFixed(2)}`;
+    });
+    0;
+    ingresosLocalStorage();
+    imprimirIngresos();
+  } else {
+    alert("El ingreso debe ser mayor a 0");
+  }
 }
 
 function guardarGasto(e) {
@@ -143,18 +147,22 @@ function guardarGasto(e) {
   let descGasto = document.querySelector("#descripcionGasto").value;
   let jarron = document.querySelector("#jarron").value;
 
-  todoGasto.unshift({ fechaGasto, montoGasto, descGasto, jarron });
+  if (montoGasto <= jarrones[jarron].valorTotalDisponible) {
+    todoGasto.unshift({ fechaGasto, montoGasto, descGasto, jarron });
 
-  jarrones[jarron].valorTotalDisponible =
-    jarrones[jarron].valorTotalDisponible - montoGasto;
+    jarrones[jarron].valorTotalDisponible =
+      jarrones[jarron].valorTotalDisponible - montoGasto;
 
-  localStorage.setItem("jarrones", JSON.stringify(jarrones));
+    localStorage.setItem("jarrones", JSON.stringify(jarrones));
 
-  let idvalor = document.querySelector(`#valor${jarron}`);
-  idvalor.innerHTML = `$ ${jarrones[jarron].valorTotalDisponible.toFixed(2)}`;
+    let idvalor = document.querySelector(`#valor${jarron}`);
+    idvalor.innerHTML = `$ ${jarrones[jarron].valorTotalDisponible.toFixed(2)}`;
 
-  gastosLocalStorage();
-  imprimirGastos();
+    gastosLocalStorage();
+    imprimirGastos();
+  } else {
+    alert("Fondos insuficientes");
+  }
 }
 
 function imprimirIngresos() {
