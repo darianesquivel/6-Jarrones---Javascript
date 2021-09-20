@@ -1,3 +1,5 @@
+//para implementar api y traer el valor del dolar.
+
 async function fetchImprimir() {
   imprimirDolar(null);
   const dato = await precioDolar();
@@ -26,6 +28,7 @@ const imprimirDolar = (data = null) => {
   } / VENTA : ${data ? data.venta : "Cargando..."}</p>`;
 };
 
+// para las alertas de error
 const alertError = (valor) => {
   Swal.fire({
     icon: "error",
@@ -34,6 +37,7 @@ const alertError = (valor) => {
   });
 };
 
+// para lar alertas success
 const alertSucc = (valor) => {
   Swal.fire({
     icon: "success",
@@ -43,6 +47,7 @@ const alertSucc = (valor) => {
   });
 };
 
+// funcion guardarIngreso, tiene todas las validaciones para ingresar un ingreso, y repartirlo en los distintos jarrones segun su porcentaje
 const guardarIngreso = (e) => {
   e.preventDefault(); // hace que no se refresque la pagina cada vez que apretamos el submit del formulario
   let fechaIngreso = document.querySelector("#fechaIngreso").value;
@@ -73,6 +78,7 @@ const guardarIngreso = (e) => {
   }
 };
 
+// funcion guardarGastos, tiene todas las validaciones para ingresar un gasto y descontarlo dentro del jarron que corresponda.
 const guardarGasto = (e) => {
   e.preventDefault(); // hace que no se refresque la pagina cada vez que apretamos el submit del formulario
   let fechaGasto = document.querySelector("#fechaGasto").value;
@@ -108,6 +114,7 @@ const guardarGasto = (e) => {
   }
 };
 
+// Agrupa todas las funciones en 1 para cargarla despues con un load
 const cargarPagina = () => {
   jarronesLocalStorage();
   jarrones.map(imprimirOption);
@@ -123,23 +130,16 @@ document
 
 document.querySelector("#formGasto").addEventListener("submit", guardarGasto); // Detecta click boton de gastos y ejecuta la funcion guardarGasto
 
-window.addEventListener("load", cargarPagina); // Cuando carga la pagina, ejecuta las funciones imprimirOption y imprimirJarrones
-
-let jarrones = [
-  { nombre: "Necesidades", valorTotalDisponible: 0, porcentaje: 55 },
-  { nombre: "Educacion", valorTotalDisponible: 0, porcentaje: 10 },
-  { nombre: "Ahorro", valorTotalDisponible: 0, porcentaje: 10 },
-  { nombre: "Diversion", valorTotalDisponible: 0, porcentaje: 10 },
-  { nombre: "Inversion", valorTotalDisponible: 0, porcentaje: 10 },
-  { nombre: "Dar", valorTotalDisponible: 0, porcentaje: 5 },
-];
+window.addEventListener("load", cargarPagina); // Cuando carga la pagina, ejecuta las funciones que agrupe anteriormente
 
 let todoIngreso = []; // Array con ingresos y descripciones
 let todoGasto = []; // Array con gastos y descripciones
 
+// Carga el jarron con los datos del localStorage
 const jarronesLocalStorage = () => {
   jarrones = JSON.parse(localStorage.getItem("jarrones"));
   if (jarrones === null) {
+    // Si no tiene nada lo crea
     jarrones = [
       { nombre: "Necesidades", valorTotalDisponible: 0, porcentaje: 55 },
       { nombre: "Educacion", valorTotalDisponible: 0, porcentaje: 10 },
@@ -151,12 +151,15 @@ const jarronesLocalStorage = () => {
   }
 };
 
+// para guardar ingresos en el localStorage
 const ingresosLocalStorage = () =>
   localStorage.setItem("ingresos", JSON.stringify(todoIngreso));
 
+// para guardar gastos en el localStorage
 const gastosLocalStorage = () =>
   localStorage.setItem("gastos", JSON.stringify(todoGasto));
 
+// trae los ingresos del local y los imprime en pantalla
 const imprimirIngresoLocalStorage = () => {
   let htmlListaIngreso = "";
   todoIngreso = JSON.parse(localStorage.getItem("ingresos"));
@@ -172,6 +175,7 @@ const imprimirIngresoLocalStorage = () => {
   listaIngreso.innerHTML = htmlListaIngreso;
 };
 
+// trae los gastos del local y los imprime en pantalla
 const imprimirGastosLocalStorage = () => {
   let htmlListaGasto = "";
   todoGasto = JSON.parse(localStorage.getItem("gastos"));
@@ -191,9 +195,11 @@ const imprimirGastosLocalStorage = () => {
   listaGasto.innerHTML = htmlListaGasto;
 };
 
+// para imprimir los distintos jarrones en las opciones de gasto
 const imprimirOption = (valor, indice) =>
   (jarron.innerHTML += `<option value="${indice}"> ${valor.nombre} </option>`);
 
+// imprime los jarrones en pantalla con las imagenes, los montos y porcentajes
 const imprimirJarrones = (valor, indice) => {
   contenedorJarrones.innerHTML += ` <div class="contenedorJarron">
   <div class="tituloJarron">
@@ -211,6 +217,7 @@ const imprimirJarrones = (valor, indice) => {
   </div> `;
 };
 
+// imprime los ingresos en pantalla.
 const imprimirIngresos = () => {
   let htmlListaIngreso = "";
   todoIngreso.map((valor, indice) => {
@@ -222,6 +229,7 @@ const imprimirIngresos = () => {
   listaIngreso.innerHTML = htmlListaIngreso;
 };
 
+//imprime los gastos en pantalla
 const imprimirGastos = () => {
   let htmlListaGasto = "";
   todoGasto.map((valor, indice) => {
@@ -236,6 +244,8 @@ const imprimirGastos = () => {
   });
   listaGasto.innerHTML = htmlListaGasto;
 };
+
+// animaciones
 
 $("#agregarIngreso").on("click", function () {
   $(".ingreso").show(100);
