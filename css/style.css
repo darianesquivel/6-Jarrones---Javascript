@@ -8,17 +8,16 @@
 }
 
 body {
-  background-color: black;
+  background-color: #151515;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .botonesPrincipales {
   display: flex;
-
-  flex-direction: column;
   text-align: center;
   gap: 5px;
   width: 50%;
@@ -26,6 +25,20 @@ body {
 
 .botonesPrincipales button {
   text-transform: uppercase;
+}
+
+.boton1,
+.boton2,
+.boton3,
+.boton4 {
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: rgb(7, 82, 143);
+  border: none;
+  color: white;
+  font-weight: 800;
+  font-size: 0.7rem;
 }
 
 /* INPUT */
@@ -89,7 +102,7 @@ body {
   width: 100%;
   height: 50px;
   color: white;
-  background-color: rgb(29, 29, 29);
+  background-color: rgb(35, 35, 35);
   display: flex;
   justify-content: space-around;
   text-align: center;
@@ -102,7 +115,7 @@ body {
 .tituloJarron {
   display: flex;
   align-items: center;
-  font-size: 0.5rem;
+  font-size: 0.4rem;
 }
 
 .imgJarron {
@@ -111,15 +124,15 @@ body {
 }
 
 .tituloJarron h3 {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .montoJarron h3 {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .botonJarron h3 {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 /* LIST */
 
@@ -177,9 +190,9 @@ body {
   }
 }
 
-/* .ingreso {
-  display: none;
-} */
+#dolar {
+  margin-top: 20px;
+}
 
 #paraIngresos {
   display: none;
