@@ -48,7 +48,14 @@ const guardarIngreso = (e) => {
   let fechaIngreso = document.querySelector("#fechaIngreso").value;
   let montoIngreso = Number(document.querySelector("#montoIngreso").value);
   let descIngreso = document.querySelector("#descripcionIngreso").value;
-  if (montoIngreso > 0) {
+
+  if (fechaIngreso == "") {
+    alertError('"Tiene que ingresar una fecha"');
+  } else if (montoIngreso == "") {
+    alertError("Tiene que ingresar un monto");
+  } else if (descIngreso == "") {
+    alertError("Tiene que ingresar una descripcion");
+  } else if (montoIngreso > 0) {
     todoIngreso.unshift({ fechaIngreso, montoIngreso, descIngreso });
     jarrones.map((valor, indice) => {
       valor.valorTotalDisponible =
@@ -72,7 +79,19 @@ const guardarGasto = (e) => {
   let montoGasto = Number(document.querySelector("#montoGasto").value);
   let descGasto = document.querySelector("#descripcionGasto").value;
   let jarron = document.querySelector("#jarron").value;
-  if (montoGasto <= jarrones[jarron].valorTotalDisponible && montoGasto > 0) {
+
+  if (fechaGasto == "") {
+    alertError("Tiene que ingresar una fecha");
+  } else if (montoGasto == "") {
+    alertError("Tiene que ingresar un monto");
+  } else if (descGasto == "") {
+    alertError("Tiene que ingresar una descripcion");
+  } else if (jarron == "") {
+    alertError("Tiene que seleccionar un jarron");
+  } else if (
+    montoGasto <= jarrones[jarron].valorTotalDisponible &&
+    montoGasto > 0
+  ) {
     todoGasto.unshift({ fechaGasto, montoGasto, descGasto, jarron });
     jarrones[jarron].valorTotalDisponible =
       jarrones[jarron].valorTotalDisponible - montoGasto;
@@ -182,7 +201,7 @@ const imprimirJarrones = (valor, indice) => {
   <h3>${valor.nombre}</h3>
   </div>
   <div class="montoJarron">
-  <h3 id="valor${indice}">$${valor.valorTotalDisponible.toFixed(0)}</h3>
+  <h3 id="valor${indice}">$${valor.valorTotalDisponible.toFixed(2)}</h3>
   </div>
   <div class="botonJarron">
   <div>
@@ -218,38 +237,19 @@ const imprimirGastos = () => {
   listaGasto.innerHTML = htmlListaGasto;
 };
 
-// $("#agregarIngreso").on("click", function () {
-//   $(".ingreso").slideDown(100);
-//   $("#paraGastos")
-//     .hide(200)
-//     .siblings("#paraIngresos")
-//     .delay(200)
-//     .slideToggle(500);
-// });
-
-// $("#agregarGasto").on("click", function () {
-//   $(".ingreso").slideDown(100);
-//   $("#paraIngresos")
-//     .hide(200)
-//     .siblings("#paraGastos")
-//     .delay(200)
-//     .slideToggle(500);
-//   $("#paraListas").hide(2000);
-// });
-
-// $("#verIngresos").on("click", function () {
-//   $("#paraListas").slideToggle(2000);
-//   $(".ingreso").hide(300);
-// });
-
 $("#agregarIngreso").on("click", function () {
+  $(".ingreso").show(100);
+  $("#paraListas").hide(600);
   $("#paraGastos").hide(200).siblings("#paraIngresos").delay(200).toggle(500);
 });
 
 $("#agregarGasto").on("click", function () {
+  $(".ingreso").show(100);
+  $("#paraListas").hide(600);
   $("#paraIngresos").hide(200).siblings("#paraGastos").delay(200).toggle(500);
 });
 
 $("#verIngresos").on("click", function () {
-  $("#paraListas").toggle(500);
+  $(".ingreso").hide(300);
+  $("#paraListas").toggle(600);
 });
