@@ -177,19 +177,19 @@ const imprimirOption = (valor, indice) =>
 
 const imprimirJarrones = (valor, indice) => {
   contenedorJarrones.innerHTML += ` <div class="contenedorJarron">
-<div class="tituloJarron">
-<img class="imgJarron" src="img/j${indice}.png">
+  <div class="tituloJarron">
+  <img class="imgJarron" src="img/j${indice}.png">
   <h3>${valor.nombre}</h3>
   </div>
-<div class="montoJarron">
+  <div class="montoJarron">
   <h3 id="valor${indice}">$${valor.valorTotalDisponible.toFixed(2)}</h3>
-</div>
-<div class="botonJarron">
-  <div>
-    <h3>${valor.porcentaje}%</h3>
   </div>
-</div>
-</div> `;
+  <div class="botonJarron">
+  <div>
+  <h3>${valor.porcentaje}%</h3>
+  </div>
+  </div>
+  </div> `;
 };
 
 const imprimirIngresos = () => {
