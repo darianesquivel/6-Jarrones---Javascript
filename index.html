@@ -21,15 +21,17 @@
   </head>
   <body>
     <div id="dolar"></div>
-    <div class="botonesPrincipales pt-3">
-      <button id="agregarIngreso" class="boton1">Agregar Ingreso</button>
-      <button id="agregarGasto" class="boton2">Agregar gasto</button>
-      <button id="verJarrones" class="boton3">Ver Jarrones</button>
-      <button id="verIngresos" class="boton4">Ingresos / Gastos</button>
+    <div class="botonesPrincipales">
+      <button id="agregarIngreso" class="boton">Agregar Ingreso</button>
+      <button id="agregarGasto" class="boton">Agregar gasto</button>
+      <button id="verIngresos" class="boton">Ingresos / Gastos</button>
     </div>
-    <section class="ingreso container">
-      <!-- PARTE INGRESOS -->
 
+    <!-- LISTA DE JARRONES -->
+    <section class="jarrones container" id="contenedorJarrones"></section>
+
+    <!-- PARTE INGRESOS -->
+    <section class="ingreso container">
       <div id="paraIngresos" class="cardIngreso">
         <h3>INGRESO</h3>
         <form action="" class="formIngreso" id="formIngreso">
@@ -40,7 +42,7 @@
             type="text"
             placeholder="Descripcion"
           />
-          <button class="btn btn-primary">Guardar</button>
+          <button class="boton">Guardar</button>
         </form>
       </div>
 
@@ -56,13 +58,10 @@
             <option value=""></option>
           </select>
 
-          <button class="btn btn-danger">Guardar</button>
+          <button class="boton">Guardar</button>
         </form>
       </div>
     </section>
-
-    <!-- LISTA DE JARRONES -->
-    <section class="jarrones container" id="contenedorJarrones"></section>
 
     <!-- LISTA INGRESOS Y GASTOS-->
     <section id="paraListas" class="lista container">

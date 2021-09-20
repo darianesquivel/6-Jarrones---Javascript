@@ -182,7 +182,7 @@ const imprimirJarrones = (valor, indice) => {
   <h3>${valor.nombre}</h3>
   </div>
   <div class="montoJarron">
-  <h3 id="valor${indice}">$${valor.valorTotalDisponible.toFixed(2)}</h3>
+  <h3 id="valor${indice}">$${valor.valorTotalDisponible.toFixed(0)}</h3>
   </div>
   <div class="botonJarron">
   <div>
@@ -218,33 +218,38 @@ const imprimirGastos = () => {
   listaGasto.innerHTML = htmlListaGasto;
 };
 
+// $("#agregarIngreso").on("click", function () {
+//   $(".ingreso").slideDown(100);
+//   $("#paraGastos")
+//     .hide(200)
+//     .siblings("#paraIngresos")
+//     .delay(200)
+//     .slideToggle(500);
+// });
+
+// $("#agregarGasto").on("click", function () {
+//   $(".ingreso").slideDown(100);
+//   $("#paraIngresos")
+//     .hide(200)
+//     .siblings("#paraGastos")
+//     .delay(200)
+//     .slideToggle(500);
+//   $("#paraListas").hide(2000);
+// });
+
+// $("#verIngresos").on("click", function () {
+//   $("#paraListas").slideToggle(2000);
+//   $(".ingreso").hide(300);
+// });
+
 $("#agregarIngreso").on("click", function () {
-  $(".ingreso").slideDown(100);
-  $("#paraGastos")
-    .slideUp(100)
-    .siblings("#paraIngresos")
-    .delay(100)
-    .slideToggle(500);
+  $("#paraGastos").hide(200).siblings("#paraIngresos").delay(200).toggle(500);
 });
 
 $("#agregarGasto").on("click", function () {
-  $(".ingreso").slideDown(100);
-  $("#paraIngresos")
-    .slideUp(100)
-    .siblings("#paraGastos")
-    .delay(100)
-    .slideToggle(500);
-});
-
-$("#verJarrones").on("click", function () {
-  $(".ingreso").slideUp(100);
-  $("#contenedorJarrones").slideToggle(1000);
+  $("#paraIngresos").hide(200).siblings("#paraGastos").delay(200).toggle(500);
 });
 
 $("#verIngresos").on("click", function () {
-  $("#paraListas").slideToggle(1000);
+  $("#paraListas").toggle(500);
 });
-
-//eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM2MDg2MTMsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJkYXJpYW5lc3F1aXZlbGZAZ21haWwuY29tIn0.ImBOy3votnt1X9_n4qEROS2Hf5Xuw1-bhVBKDc1mY3Ru4Z7GGOnOSa5uowoaiPH_Qdh-69SkJBT5bmjZdNcghQ
-
-//Authorization: BEARER eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM2MDg2MTMsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJkYXJpYW5lc3F1aXZlbGZAZ21haWwuY29tIn0.ImBOy3votnt1X9_n4qEROS2Hf5Xuw1-bhVBKDc1mY3Ru4Z7GGOnOSa5uowoaiPH_Qdh-69SkJBT5bmjZdNcghQ

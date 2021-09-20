@@ -17,45 +17,40 @@ body {
 }
 
 .botonesPrincipales {
+  width: 50%;
   display: flex;
   text-align: center;
   justify-content: center;
   gap: 5px;
 }
 
-.botonesPrincipales button {
-  text-transform: uppercase;
-}
-
-.boton1,
-.boton2,
-.boton3,
-.boton4 {
+.boton {
   width: 150px;
-  height: 50px;
+  height: 45px;
   border-radius: 5px;
   background-color: rgb(7, 82, 143);
   border: none;
   color: white;
   font-weight: 800;
   font-size: 0.7rem;
+  text-transform: uppercase;
 }
 
 /* INPUT */
 
 .ingreso {
-  width: 100%;
-  height: 250px;
+  width: 50%;
+  height: 30vh;
   color: white;
   display: flex;
   text-align: center;
   align-items: center;
-  justify-content: space-around;
-  margin-top: 10px;
+  justify-content: center;
+  position: relative;
 }
 
 .cardIngreso {
-  width: 40%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -89,7 +84,7 @@ body {
 /* JARS */
 
 .jarrones {
-  width: 70%;
+  width: 50%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -100,7 +95,8 @@ body {
 }
 
 .contenedorJarron {
-  height: 50px;
+  width: 100%;
+  height: 45px;
   color: white;
   display: flex;
   justify-content: space-around;
@@ -113,7 +109,7 @@ body {
 .tituloJarron {
   background-color: rgb(35, 35, 35);
   border-radius: 5px;
-  height: 50px;
+  height: 45px;
   width: 35%;
   font-size: 0.4rem;
   display: flex;
@@ -126,7 +122,7 @@ body {
 .montoJarron {
   background-color: rgb(35, 35, 35);
   border-radius: 5px;
-  height: 50px;
+  height: 45px;
   width: 25%;
   display: flex;
   justify-content: center;
@@ -137,7 +133,7 @@ body {
 .botonJarron {
   background-color: rgb(35, 35, 35);
   border-radius: 5px;
-  height: 50px;
+  height: 45px;
   width: 20%;
   display: flex;
   justify-content: center;
@@ -165,7 +161,7 @@ body {
 
 .lista {
   width: 100%;
-  height: 50vh;
+  height: 100vh;
   display: flex;
   margin-top: 10px;
 }
@@ -199,9 +195,7 @@ body {
 @media (max-width: 600px) {
   .ingreso {
     width: 100%;
-    height: 420px;
-    flex-direction: column;
-    gap: 10px;
+    margin-top: 20px;
   }
 
   .cardIngreso {
@@ -234,10 +228,6 @@ body {
 }
 
 #paraGastos {
-  display: none;
-}
-
-#contenedorJarrones {
   display: none;
 }
 
