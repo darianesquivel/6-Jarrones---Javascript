@@ -161,27 +161,35 @@ const gastosLocalStorage = () =>
 
 // trae los ingresos del local y los imprime en pantalla
 const imprimirIngresoLocalStorage = () => {
-  let htmlListaIngreso = "";
   todoIngreso = JSON.parse(localStorage.getItem("ingresos"));
   if (todoIngreso === null) {
     todoIngreso = [];
   }
+  imprimirIngresos();
+};
+
+const imprimirIngresos = () => {
+  let htmlListaIngreso = "";
   todoIngreso.map((valor, indice) => {
     if (indice > 9) {
       return;
     }
-    htmlListaIngreso += `<p class="alert alert-success" role="alert"> Fecha : ${valor.fechaIngreso} Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
+    htmlListaIngreso += `<p class="alert alert-success" role="alert">Fecha : ${valor.fechaIngreso} Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
   });
   listaIngreso.innerHTML = htmlListaIngreso;
 };
 
 // trae los gastos del local y los imprime en pantalla
 const imprimirGastosLocalStorage = () => {
-  let htmlListaGasto = "";
   todoGasto = JSON.parse(localStorage.getItem("gastos"));
   if (todoGasto === null) {
     todoGasto = [];
   }
+  imprimirGastos();
+};
+
+const imprimirGastos = () => {
+  let htmlListaGasto = "";
   todoGasto.map((valor, indice) => {
     if (indice > 9) {
       return;
@@ -215,34 +223,6 @@ const imprimirJarrones = (valor, indice) => {
   </div>
   </div>
   </div> `;
-};
-
-// imprime los ingresos en pantalla.
-const imprimirIngresos = () => {
-  let htmlListaIngreso = "";
-  todoIngreso.map((valor, indice) => {
-    if (indice > 9) {
-      return;
-    }
-    htmlListaIngreso += `<p class="alert alert-success" role="alert">Fecha : ${valor.fechaIngreso} Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
-  });
-  listaIngreso.innerHTML = htmlListaIngreso;
-};
-
-//imprime los gastos en pantalla
-const imprimirGastos = () => {
-  let htmlListaGasto = "";
-  todoGasto.map((valor, indice) => {
-    if (indice > 9) {
-      return;
-    }
-    htmlListaGasto += `<p  class="alert alert-danger" role="alert"> Fecha : ${
-      valor.fechaGasto
-    } Descripcion : ${valor.descGasto}  Monto: $${valor.montoGasto}  Jarron: ${
-      jarrones[valor.jarron].nombre
-    }</p> `;
-  });
-  listaGasto.innerHTML = htmlListaGasto;
 };
 
 // animaciones
