@@ -1,0 +1,32 @@
+[
+  {
+    "nombre": "Necesidades",
+    "valorTotalDisponible": 0,
+    "porcentaje": 55
+  },
+  {
+    "nombre": "Educacion",
+    "valorTotalDisponible": 0,
+    "porcentaje": 10
+  },
+  {
+    "nombre": "Ahorro",
+    "valorTotalDisponible": 0,
+    "porcentaje": 10
+  },
+  {
+    "nombre": "Diversion",
+    "valorTotalDisponible": 0,
+    "porcentaje": 10
+  },
+  {
+    "nombre": "Inversion",
+    "valorTotalDisponible": 0,
+    "porcentaje": 10
+  },
+  {
+    "nombre": "Dar",
+    "valorTotalDisponible": 0,
+    "porcentaje": 10
+  }
+]

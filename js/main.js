@@ -117,8 +117,6 @@ const guardarGasto = (e) => {
 // Agrupa todas las funciones en 1 para cargarla despues con un load
 const cargarPagina = () => {
   jarronesLocalStorage();
-  jarrones.map(imprimirOption);
-  jarrones.map(imprimirJarrones);
   imprimirIngresoLocalStorage();
   imprimirGastosLocalStorage();
   fetchImprimir();
@@ -135,20 +133,37 @@ window.addEventListener("load", cargarPagina); // Cuando carga la pagina, ejecut
 let todoIngreso = []; // Array con ingresos y descripciones
 let todoGasto = []; // Array con gastos y descripciones
 
+async function obtenerJarrones() {
+  const jarrones = await fetch("js/jarrones.json")
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => console.log(err));
+
+  return jarrones;
+}
+
 // Carga el jarron con los datos del localStorage
-const jarronesLocalStorage = () => {
+const jarronesLocalStorage = async () => {
   jarrones = JSON.parse(localStorage.getItem("jarrones"));
   if (jarrones === null) {
-    // Si no tiene nada lo crea
-    jarrones = [
-      { nombre: "Necesidades", valorTotalDisponible: 0, porcentaje: 55 },
-      { nombre: "Educacion", valorTotalDisponible: 0, porcentaje: 10 },
-      { nombre: "Ahorro", valorTotalDisponible: 0, porcentaje: 10 },
-      { nombre: "Diversion", valorTotalDisponible: 0, porcentaje: 10 },
-      { nombre: "Inversion", valorTotalDisponible: 0, porcentaje: 10 },
-      { nombre: "Dar", valorTotalDisponible: 0, porcentaje: 5 },
-    ];
+    //Si no tiene nada lo crea
+    jarrones = await obtenerJarrones();
+    console.log(jarrones);
+
+    //si el local esta null trae el array desde el JSON
+    // jarrones = [
+    //   { nombre: "Necesidades", valorTotalDisponible: 0, porcentaje: 55 },
+    //   { nombre: "Educacion", valorTotalDisponible: 0, porcentaje: 10 },
+    //   { nombre: "Ahorro", valorTotalDisponible: 0, porcentaje: 10 },
+    //   { nombre: "Diversion", valorTotalDisponible: 0, porcentaje: 10 },
+    //   { nombre: "Inversion", valorTotalDisponible: 0, porcentaje: 10 },
+    //   { nombre: "Dar", valorTotalDisponible: 0, porcentaje: 5 },
+    // ];
   }
+  jarrones.map(imprimirJarrones);
+  jarrones.map(imprimirOption);
 };
 
 // para guardar ingresos en el localStorage
