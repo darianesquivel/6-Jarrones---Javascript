@@ -17,15 +17,23 @@
       rel="stylesheet"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <link rel="stylesheet" href="css/style.css" />
     <title>6 JARS</title>
   </head>
   <body>
     <div id="dolar"></div>
     <div class="botonesPrincipales">
-      <button id="agregarIngreso" class="boton">Agregar Ingreso</button>
-      <button id="agregarGasto" class="boton">Agregar gasto</button>
-      <button id="verIngresos" class="boton">Ingresos / Gastos</button>
+      <button id="agregarIngreso" class="boton">Agregar Ingreso <i class="fas fa-plus"></i></button>
+      <button id="agregarGasto" class="boton">Agregar gasto <i class="fas fa-plus"></i></button>
+      <button id="verIngresos" class="boton">Ingresos / Gastos <i class="fas fa-stream"></i></button>
     </div>
 
     <!-- LISTA DE JARRONES -->
@@ -34,7 +42,7 @@
     <!-- PARTE INGRESOS -->
     <section class="ingreso container">
       <div id="paraIngresos" class="cardIngreso">
-        <h3>INGRESO</h3>
+        <h3>INGRESO</i></h3>
         <form action="" class="formIngreso" id="formIngreso">
           <input type="date" id="fechaIngreso" />
           <input id="montoIngreso" type="number" placeholder="Monto" />

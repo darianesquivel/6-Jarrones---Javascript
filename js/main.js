@@ -54,6 +54,7 @@ const guardarIngreso = (e) => {
   let montoIngreso = Number(document.querySelector("#montoIngreso").value);
   let descIngreso = document.querySelector("#descripcionIngreso").value;
 
+  //validaciones para que no deje vacio los campos
   if (fechaIngreso == "") {
     alertError('"Tiene que ingresar una fecha"');
   } else if (montoIngreso == "") {
@@ -86,6 +87,7 @@ const guardarGasto = (e) => {
   let descGasto = document.querySelector("#descripcionGasto").value;
   let jarron = document.querySelector("#jarron").value;
 
+  //validaciones para que no deje vacio los campos
   if (fechaGasto == "") {
     alertError("Tiene que ingresar una fecha");
   } else if (montoGasto == "") {
@@ -133,6 +135,7 @@ window.addEventListener("load", cargarPagina); // Cuando carga la pagina, ejecut
 let todoIngreso = []; // Array con ingresos y descripciones
 let todoGasto = []; // Array con gastos y descripciones
 
+//para traer la info de los jarrones
 async function obtenerJarrones() {
   const jarrones = await fetch("js/jarrones.json")
     .then((res) => res.json())
@@ -151,17 +154,8 @@ const jarronesLocalStorage = async () => {
     //Si no tiene nada lo crea
     jarrones = await obtenerJarrones();
     console.log(jarrones);
-
-    //si el local esta null trae el array desde el JSON
-    // jarrones = [
-    //   { nombre: "Necesidades", valorTotalDisponible: 0, porcentaje: 55 },
-    //   { nombre: "Educacion", valorTotalDisponible: 0, porcentaje: 10 },
-    //   { nombre: "Ahorro", valorTotalDisponible: 0, porcentaje: 10 },
-    //   { nombre: "Diversion", valorTotalDisponible: 0, porcentaje: 10 },
-    //   { nombre: "Inversion", valorTotalDisponible: 0, porcentaje: 10 },
-    //   { nombre: "Dar", valorTotalDisponible: 0, porcentaje: 5 },
-    // ];
   }
+  //cuando tiene la info del local imprime los jarrones
   jarrones.map(imprimirJarrones);
   jarrones.map(imprimirOption);
 };
@@ -189,7 +183,7 @@ const imprimirIngresos = () => {
     if (indice > 9) {
       return;
     }
-    htmlListaIngreso += `<p class="alert alert-success" role="alert">Fecha : ${valor.fechaIngreso} Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
+    htmlListaIngreso += `<p class="alert alert-secondary" role="alert">Fecha : ${valor.fechaIngreso} Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
   });
   listaIngreso.innerHTML = htmlListaIngreso;
 };
@@ -203,13 +197,38 @@ const imprimirGastosLocalStorage = () => {
   imprimirGastos();
 };
 
+//para variar el color de la lista de los gastos.
+const seleccionarColor = (a) => {
+  switch (a) {
+    case "Necesidades":
+      return "alert alert-danger";
+      break;
+    case "Educacion":
+      return "alert alert-success";
+      break;
+    case "Ahorro":
+      return "alert alert-warning";
+      break;
+    case "Diversion":
+      return "alert alert-primary";
+      break;
+    case "Inversion":
+      return "alert alert-info";
+      break;
+    case "Dar":
+      return "alert alert-light";
+      break;
+  }
+};
+
 const imprimirGastos = () => {
   let htmlListaGasto = "";
   todoGasto.map((valor, indice) => {
+    let clase = seleccionarColor(jarrones[valor.jarron].nombre);
     if (indice > 9) {
       return;
     }
-    htmlListaGasto += `<p  class="alert alert-danger" role="alert"> Fecha : ${
+    htmlListaGasto += `<p  class="${clase}" role="alert"> Fecha : ${
       valor.fechaGasto
     } Descripcion : ${valor.descGasto}  Monto: $${valor.montoGasto}  Jarron: ${
       jarrones[valor.jarron].nombre
