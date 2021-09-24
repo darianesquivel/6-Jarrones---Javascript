@@ -337,7 +337,8 @@ header {
 
 .info li {
   list-style: none;
-  margin: 5px;
+  margin: 10px;
+  text-align: center;
 }
 
 /* INGRESOS */
