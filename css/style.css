@@ -362,6 +362,10 @@ header {
   font-size: 2rem;
 }
 
+.alert {
+  margin: 10px;
+}
+
 /* GASTOS */
 
 .fa-comments-dollar {

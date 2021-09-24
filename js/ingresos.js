@@ -1,8 +1,8 @@
 const imprimirIngresos = () => {
   let htmlListaIngreso = "";
 
-  todoIngreso.map((valor, indice) => {
-    htmlListaIngreso += `<p class="seccionIngresosTotal alert alert-secondary" role="alert">Fecha : ${valor.fechaIngreso} Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
+  todoIngreso.map((valor) => {
+    htmlListaIngreso += `<p class="alert alert-secondary" role="alert">Fecha : ${valor.fechaIngreso} Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
   });
   seccionListaIngresos.innerHTML = htmlListaIngreso;
 };
