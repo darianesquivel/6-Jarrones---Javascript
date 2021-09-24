@@ -20,6 +20,13 @@ body {
   text-align: center;
 }
 
+header {
+  height: 7vh;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .botonesPrincipales {
   width: 100%;
   display: flex;
@@ -38,6 +45,55 @@ body {
   font-weight: 800;
   font-size: 0.7rem;
   text-transform: uppercase;
+}
+
+.tituloSeccion {
+  color: white;
+  text-transform: uppercase;
+  display: flex;
+  gap: 20px;
+}
+
+/* MENU */
+
+.navbar {
+  background-color: #151515 !important;
+}
+
+.fa-bars {
+  width: 100%;
+  color: white;
+  font-size: 2rem;
+}
+
+.navbar-light .navbar-toggler {
+  border-color: rgba(0, 0, 0, 0) !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+
+.offcanvas {
+  width: 300px;
+  color: white;
+  background-color: rgb(15, 15, 15) !important;
+  text-transform: uppercase;
+}
+
+.nav-link {
+  color: white !important;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  background-color: rgb(7, 82, 143);
+  transition: 0.5s;
+}
+
+.btn-close {
+  background-color: rgb(7, 82, 143);
 }
 
 /* INPUT */
@@ -210,6 +266,9 @@ body {
 /* MEDIAQUERYS */
 
 @media (max-width: 600px) {
+  header {
+    height: 10vh;
+  }
 }
 
 #dolar {
@@ -246,4 +305,32 @@ body {
   100% {
     transform: rotate(180deg);
   }
+}
+
+/* INFO */
+
+.fa-info-circle {
+  color: white;
+  font-size: 2rem;
+}
+
+/* INGRESOS */
+
+.fa-money-check-alt {
+  color: white;
+  font-size: 2rem;
+}
+
+/* GASTOS */
+
+.fa-comments-dollar {
+  color: white;
+  font-size: 2rem;
+}
+
+/* CONFIGURACION */
+
+.fa-cog {
+  color: white;
+  font-size: 2rem;
 }

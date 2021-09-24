@@ -154,7 +154,6 @@ const jarronesLocalStorage = async () => {
   if (jarrones === null) {
     //Si no tiene nada lo crea
     jarrones = await obtenerJarrones();
-    console.log(jarrones);
   }
   //cuando tiene la info del local imprime los jarrones
   jarrones.map(imprimirJarrones);
