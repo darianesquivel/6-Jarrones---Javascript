@@ -29,7 +29,7 @@ body {
 }
 
 .boton {
-  width: 100px;
+  width: 110px;
   height: 45px;
   border-radius: 5px;
   background-color: rgb(7, 82, 143);
@@ -232,3 +232,18 @@ body {
 /* #paraListas {
   display: none;
 } */
+
+/* animacion para la carga */
+
+.fa-spinner {
+  animation-name: toggle-up;
+  animation-delay: 0s;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes toggle-up {
+  100% {
+    transform: rotate(180deg);
+  }
+}

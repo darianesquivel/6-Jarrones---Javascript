@@ -7,8 +7,9 @@ async function fetchImprimir() {
 }
 
 async function precioDolar() {
-  const url = "https://www.dolarsi.com/api/api.php?type=valoresprincipales";
-  const dolar = await fetch(url)
+  const dolar = await fetch(
+    "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
+  )
     .then((res) => res.json())
     .then((data) => {
       return data[0].casa;
@@ -21,11 +22,11 @@ async function precioDolar() {
 const imprimirDolar = (data = null) => {
   const valorDolar = document.querySelector("#dolar");
   valorDolar.innerHTML = `<p class='paraDolar'> ${
-    data ? data.nombre : "Cargando..."
+    data ? data.nombre : "<i class='fas fa-spinner'></i>"
   }</p>`;
   valorDolar.innerHTML += `<p class='paraDolar'>COMPRA : ${
-    data ? data.compra : "Cargando..."
-  } / VENTA : ${data ? data.venta : "Cargando..."}</p>`;
+    data ? data.compra : "<i class='fas fa-spinner'></i>"
+  } / VENTA : ${data ? data.venta : "<i class='fas fa-spinner'></i>"}</p>`;
 };
 
 // para las alertas de error
