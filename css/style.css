@@ -222,6 +222,10 @@ header {
 }
 /* LIST */
 
+#paraListas {
+  width: 60%;
+}
+
 .lista {
   width: 100%;
   height: 100vh;
@@ -270,6 +274,9 @@ header {
 @media (max-width: 600px) {
   header {
     height: 10vh;
+  }
+  #paraListas {
+    width: 100%;
   }
 }
 

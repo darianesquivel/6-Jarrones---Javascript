@@ -11,7 +11,7 @@ const imprimirIngresos = () => {
 const imprimirIngresoLocalStorage = () => {
   todoIngreso = JSON.parse(localStorage.getItem("ingresos"));
   if (todoIngreso === null) {
-    seccionListaIngresos.innerHTML = `<p class="alert alert-secondary" role="alert"> NO REGISTRO INGRESOS`;
+    seccionListaIngresos.innerHTML = `<p class="alert alert-secondary" role="alert"> NO REGISTRA INGRESOS`;
     return;
   }
   imprimirIngresos();
