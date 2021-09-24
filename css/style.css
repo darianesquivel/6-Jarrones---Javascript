@@ -48,9 +48,11 @@ header {
 }
 
 .tituloSeccion {
+  width: 100%;
   color: white;
   text-transform: uppercase;
   display: flex;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -312,6 +314,30 @@ header {
 .fa-info-circle {
   color: white;
   font-size: 2rem;
+}
+
+.info {
+  width: 100%;
+  color: white;
+  padding: 20px;
+  font-weight: 500;
+}
+
+.info p {
+  margin-bottom: 20px;
+}
+
+.info ul {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.info li {
+  list-style: none;
+  margin: 5px;
 }
 
 /* INGRESOS */
