@@ -341,6 +341,13 @@ header {
   text-align: center;
 }
 
+.resaltar {
+  font-weight: 600;
+  color: rgb(7, 82, 143);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
 /* INGRESOS */
 
 .fa-money-check-alt {
