@@ -11,6 +11,10 @@ p {
   margin-bottom: 0; /* RESET SCSS*/
 }
 
+main {
+  width: 100%;
+}
+
 body {
   background-color: #151515;
   display: flex;
@@ -371,6 +375,17 @@ header {
 .fa-comments-dollar {
   color: white;
   font-size: 2rem;
+}
+
+.gastosPorJarron {
+  width: 100%;
+  background-color: rgb(54, 54, 54);
+  border-radius: 3px;
+}
+
+.gastosPorJarronTitulo {
+  color: white;
+  text-transform: uppercase;
 }
 
 /* CONFIGURACION */
