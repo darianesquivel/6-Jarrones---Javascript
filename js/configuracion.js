@@ -83,10 +83,9 @@ const tomarPorcentajes = () => {
     rangoInversion +
     rangoDar;
 
-  console.log(porcentajeTotal);
   if (porcentajeTotal > 100) {
     alertError("La suma de porcentajes debe ser 100%");
-    mostrarPorcentajes();
+    mostrarPorcentajeTotal.innerHTML = `${porcentajeTotal} %`;
   } else {
     mostrarPorcentajeTotal.innerHTML = `${porcentajeTotal} %`;
   }
@@ -123,7 +122,9 @@ const guardarPorcentajes = (e) => {
     jarrones[4].porcentaje = rangoInversion;
     jarrones[5].porcentaje = rangoDar;
     localStorage.setItem("jarrones", JSON.stringify(jarrones));
-    alertSucc("Nuevos porcentajes guardados");
+    alertSucc("Cambios guardados");
+  } else {
+    alertError("La suma de porcentajes debe ser 100%");
   }
 };
 
