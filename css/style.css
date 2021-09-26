@@ -273,17 +273,6 @@ header {
   text-transform: uppercase;
 }
 
-/* MEDIAQUERYS */
-
-@media (max-width: 600px) {
-  header {
-    height: 10vh;
-  }
-  #paraListas {
-    width: 100%;
-  }
-}
-
 #dolar {
   margin: 5px;
   border-radius: 5px;
@@ -328,7 +317,6 @@ header {
 }
 
 .info {
-  width: 100%;
   color: white;
   padding: 20px;
   font-weight: 500;
@@ -340,7 +328,7 @@ header {
 
 .info ul {
   padding: 20px;
-  width: 100%;
+
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -361,6 +349,14 @@ header {
 
 /* INGRESOS */
 
+#seccionListaIngresos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .fa-money-check-alt {
   color: white;
   font-size: 2rem;
@@ -372,20 +368,46 @@ header {
 
 /* GASTOS */
 
+#jarronesGastos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .fa-comments-dollar {
   color: white;
   font-size: 2rem;
 }
 
 .gastosPorJarron {
-  width: 100%;
+  width: 50%;
   background-color: rgb(54, 54, 54);
   border-radius: 3px;
+  margin-top: 10px;
 }
 
-.gastosPorJarronTitulo {
+.gastosPorJarronTitulo h3 {
+  font-size: 1rem;
   color: white;
   text-transform: uppercase;
+}
+
+.list-group-horizontal {
+  width: 50%;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  margin: 5px;
+}
+
+.list-group-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 /* CONFIGURACION */
@@ -393,4 +415,23 @@ header {
 .fa-cog {
   color: white;
   font-size: 2rem;
+}
+
+/* MEDIAQUERYS */
+
+@media (max-width: 600px) {
+  header {
+    height: 10vh;
+  }
+  #paraListas {
+    width: 100%;
+  }
+
+  .list-group-horizontal {
+    width: 95%;
+  }
+
+  .gastosPorJarron {
+    width: 95%;
+  }
 }

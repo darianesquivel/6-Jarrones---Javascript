@@ -2,7 +2,11 @@ const imprimirIngresos = () => {
   let htmlListaIngreso = "";
 
   todoIngreso.map((valor) => {
-    htmlListaIngreso += `<p class="alert alert-secondary" role="alert">Fecha : ${valor.fechaIngreso} Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
+    htmlListaIngreso += `<ul class="list-group list-group-horizontal">
+    <li class="list-group-item">${valor.fechaIngreso}</li>
+    <li class="list-group-item">${valor.descIngreso}</li>
+    <li class="list-group-item">$${valor.montoIngreso}</li>
+  </ul>`;
   });
   seccionListaIngresos.innerHTML = htmlListaIngreso;
 };

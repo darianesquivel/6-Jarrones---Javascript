@@ -27,9 +27,7 @@ const imprimirJarrones = (valor, indice) => {
     <div class="gastosPorJarronTitulo">
     <img class="gastosPorJarronImg" src="img/j${indice}.png">
     <h3>${valor.nombre}</h3>
-    <div id="listaGastoCU">
     
-    </div>
     </div>
     </div> `;
   imprimirGastosLocalStorage(valor.nombre);
@@ -51,11 +49,11 @@ const imprimirGastos = (nombreJarron) => {
       if (indice > 9) {
         return;
       }
-      htmlListaGasto += `<p  class="alert alert-light" role="alert"> Fecha : ${
-        valor.fechaGasto
-      } Descripcion : ${valor.descGasto}  Monto: $${
-        valor.montoGasto
-      }  Jarron: ${jarrones[valor.jarron].nombre}</p> `;
+      htmlListaGasto += `<ul class="list-group list-group-horizontal">
+      <li class="list-group-item">${valor.fechaGasto}</li>
+      <li class="list-group-item">${valor.descGasto}</li>
+      <li class="list-group-item">$${valor.montoGasto}</li>
+    </ul>`;
     }
   });
   jarronesGastos.innerHTML += htmlListaGasto;
