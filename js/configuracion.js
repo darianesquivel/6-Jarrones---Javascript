@@ -29,7 +29,11 @@ async function obtenerJarrones() {
 
 const mostrarPorcentajes = async (e) => {
   //e.preventDefault();
-  jarrones = await obtenerJarrones(); // obtengo datos de los jarrones
+  jarrones = JSON.parse(localStorage.getItem("jarrones"));
+  if (jarrones === null) {
+    //Si no tiene nada lo crea
+    jarrones = await obtenerJarrones(); // obtengo datos de los jarrones
+  }
 
   //le paso el valor al formulario de cada jarron para que los range se muestren en el lugar correcto.
   document.querySelector("#rangeNecesidades").value = jarrones[0].porcentaje;
@@ -57,12 +61,6 @@ const mostrarPorcentajes = async (e) => {
 
   //muestra el porcentaje en pantalla al lado del range.
   mostrarPorcentajeTotal.innerHTML = `${porcentajeTotal} %`;
-  mostrarPorcentajeNecesidades.innerHTML = `${rangoNecesidades}%`;
-  mostrarPorcentajeEducacion.innerHTML = `${rangoEducacion} %`;
-  mostrarPorcentajeAhorro.innerHTML = `${rangoAhorro} %`;
-  mostrarPorcentajeDiversion.innerHTML = `${rangoDiversion} %`;
-  mostrarPorcentajeInversion.innerHTML = `${rangoInversion} %`;
-  mostrarPorcentajeDar.innerHTML = `${rangoDar} %`;
 };
 
 mostrarPorcentajes();
@@ -91,12 +89,6 @@ const tomarPorcentajes = () => {
     mostrarPorcentajes();
   } else {
     mostrarPorcentajeTotal.innerHTML = `${porcentajeTotal} %`;
-    mostrarPorcentajeNecesidades.innerHTML = `${rangoNecesidades}%`;
-    mostrarPorcentajeEducacion.innerHTML = `${rangoEducacion} %`;
-    mostrarPorcentajeAhorro.innerHTML = `${rangoAhorro} %`;
-    mostrarPorcentajeDiversion.innerHTML = `${rangoDiversion} %`;
-    mostrarPorcentajeInversion.innerHTML = `${rangoInversion} %`;
-    mostrarPorcentajeDar.innerHTML = `${rangoDar} %`;
   }
 };
 
@@ -104,37 +96,37 @@ document
   .querySelector("#porcentaje")
   .addEventListener("change", tomarPorcentajes);
 
-// const guardarPorcentajes = () => {
-//     let rangoNecesidades = Number(
-//         document.querySelector("#rangeNecesidades").value
-//       );
-//       let rangoEducacion = Number(document.querySelector("#rangeEducacion").value);
-//       let rangoAhorro = Number(document.querySelector("#rangeAhorro").value);
-//       let rangoDiversion = Number(document.querySelector("#rangeDiversion").value);
-//       let rangoInversion = Number(document.querySelector("#rangeInversion").value);
-//       let rangoDar = Number(document.querySelector("#rangeDar").value);
+const guardarPorcentajes = (e) => {
+  e.preventDefault();
+  let rangoNecesidades = Number(
+    document.querySelector("#rangeNecesidades").value
+  );
+  let rangoEducacion = Number(document.querySelector("#rangeEducacion").value);
+  let rangoAhorro = Number(document.querySelector("#rangeAhorro").value);
+  let rangoDiversion = Number(document.querySelector("#rangeDiversion").value);
+  let rangoInversion = Number(document.querySelector("#rangeInversion").value);
+  let rangoDar = Number(document.querySelector("#rangeDar").value);
 
-//       jarrones =
+  let porcentajeTotal =
+    rangoNecesidades +
+    rangoEducacion +
+    rangoAhorro +
+    rangoDiversion +
+    rangoInversion +
+    rangoDar;
 
-//       localStorage.setItem("jarrones", JSON.stringify(jarrones));
+  if (porcentajeTotal == 100) {
+    jarrones[0].porcentaje = rangoNecesidades;
+    jarrones[1].porcentaje = rangoEducacion;
+    jarrones[2].porcentaje = rangoAhorro;
+    jarrones[3].porcentaje = rangoDiversion;
+    jarrones[4].porcentaje = rangoInversion;
+    jarrones[5].porcentaje = rangoDar;
+    localStorage.setItem("jarrones", JSON.stringify(jarrones));
+    alertSucc("Nuevos porcentajes guardados");
+  }
+};
 
-// }
-
-//   let rangoNecesidades = document.querySelector("#rangeNecesidades").value;
-//   let rangoEducacion = document.querySelector("#rangeEducacion").value;
-//   let rangoAhorro = document.querySelector("#rangeAhorro").value;
-//   let rangoDiversion = document.querySelector("#rangeDiversion").value;
-//   let rangoInversion = document.querySelector("#rangeInversion").value;
-//   let rangoDar = document.querySelector("#rangeDar").value;
-
-//   let porcentajeTotal =
-//     rangoNecesidades +
-//     rangoEducacion +
-//     rangoAhorro +
-//     rangoDiversion +
-//     rangoInversion +
-//     rangoDar;
-
-//   if (porcentajeTotal > 100) {
-//     alert("la suma de los porcentajes tiene que ser 100");
-//   }
+document
+  .querySelector("#agregarIngreso")
+  .addEventListener("click", guardarPorcentajes);

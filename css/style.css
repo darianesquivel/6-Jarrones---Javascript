@@ -428,12 +428,24 @@ header {
 .formPorcentajes {
   width: 50%;
   color: white;
+  font-weight: 500;
   text-transform: uppercase;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .formPorcentajes form {
   margin-top: 20px;
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formPorcentajes form input {
+  margin-bottom: 10px;
 }
 
 /* MEDIAQUERYS */
