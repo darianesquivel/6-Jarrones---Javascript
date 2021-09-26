@@ -1,3 +1,21 @@
+const alertError = (valor) => {
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: `${valor}`,
+  });
+};
+
+// para lar alertas success
+const alertSucc = (valor) => {
+  Swal.fire({
+    icon: "success",
+    title: `${valor}`,
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
+
 async function obtenerJarrones() {
   const jarrones = await fetch("js/jarrones.json")
     .then((res) => res.json())
@@ -69,7 +87,7 @@ const tomarPorcentajes = () => {
 
   console.log(porcentajeTotal);
   if (porcentajeTotal > 100) {
-    alert("la suma de los porcentajes tiene que ser 100");
+    alertError("La suma de porcentajes debe ser 100%");
     mostrarPorcentajes();
   } else {
     mostrarPorcentajeTotal.innerHTML = `${porcentajeTotal} %`;
