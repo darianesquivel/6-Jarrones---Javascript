@@ -90,10 +90,77 @@
       </nav>
     </header>
     <main>
-      <div class="tituloSeccion">
-        <h2>Configuración</h2>
-        <i class="fas fa-cog"></i>
-      </div>
+      <section class="sectionConfiguracion">
+        <div class="tituloSeccion">
+          <h2>Configuración</h2>
+          
+          <i class="fas fa-cog"></i>
+        </div>
+
+        <div id="porcentaje" class="formPorcentajes">
+          <h2>Porcentajes jarrones</h2>
+          <h2 id="mostrarPorcentajeTotal"></h2>
+          <form action="">
+            
+            <label for="customRange2" class="form-label">Necesidades<p id="mostrarPorcentajeNecesidades">A</p></label>
+            <input
+              type="range"
+              class="form-range"
+              min="0"
+              max="100"
+              id="rangeNecesidades"
+            />
+            
+            <label for="customRange2" class="form-label">Educacion<p id="mostrarPorcentajeEducacion">A</p></label>
+            <input
+              type="range"
+              class="form-range"
+              min="0"
+              max="100"
+              id="rangeEducacion"
+            />
+            
+            <label for="customRange2" class="form-label">Ahorro<p id="mostrarPorcentajeAhorro">A</p></label>
+            <input
+              type="range"
+              class="form-range"
+              min="0"
+              max="100"
+              id="rangeAhorro"
+            />
+            
+            <label for="customRange2" class="form-label">Diversion<p id="mostrarPorcentajeDiversion">A</p></label>
+            <input
+              type="range"
+              class="form-range"
+              min="0"
+              max="100"
+              id="rangeDiversion"
+            />
+            
+            <label for="customRange2" class="form-label">Inversion<p id="mostrarPorcentajeInversion">A</p></label>
+            <input
+              type="range"
+              class="form-range"
+              min="0"
+              max="100"
+              id="rangeInversion"
+            />
+           
+            <label for="customRange2" class="form-label">Dar<p id="mostrarPorcentajeDar">A</p></label>
+            <input
+              type="range"
+              class="form-range"
+              min="0"
+              max="100"
+              id="rangeDar"
+            />
+            <button id="agregarIngreso" class="boton">
+              Guardar <i class="far fa-save"></i></i>
+            </button>
+          </form>
+        </div>
+      </section>
     </main>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script
@@ -107,5 +174,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/jarrones.json"></script>
+    <script src="js/configuracion.js"></script>
   </body>
 </html>
