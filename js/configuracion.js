@@ -1,21 +1,3 @@
-const alertError = (valor) => {
-  Swal.fire({
-    icon: "error",
-    title: "Oops...",
-    text: `${valor}`,
-  });
-};
-
-// para lar alertas success
-const alertSucc = (valor) => {
-  Swal.fire({
-    icon: "success",
-    title: `${valor}`,
-    showConfirmButton: false,
-    timer: 1500,
-  });
-};
-
 async function obtenerJarrones() {
   const jarrones = await fetch("js/jarrones.json")
     .then((res) => res.json())
@@ -35,6 +17,12 @@ const mostrarPorcentajes = async (e) => {
     jarrones = await obtenerJarrones(); // obtengo datos de los jarrones
   }
 
+  const sumaPorcentajes = (porc1, porc2, porc3, porc4, porc5, porc6) => {
+    let total = porc1 + porc2 + porc3 + porc4 + porc5 + porc6;
+
+    return total;
+  };
+
   //le paso el valor al formulario de cada jarron para que los range se muestren en el lugar correcto.
   document.querySelector("#rangeNecesidades").value = jarrones[0].porcentaje;
   document.querySelector("#rangeEducacion").value = jarrones[1].porcentaje;
@@ -51,13 +39,15 @@ const mostrarPorcentajes = async (e) => {
   let rangoDiversion = Number(document.querySelector("#rangeDiversion").value);
   let rangoInversion = Number(document.querySelector("#rangeInversion").value);
   let rangoDar = Number(document.querySelector("#rangeDar").value);
-  let porcentajeTotal =
-    rangoNecesidades +
-    rangoEducacion +
-    rangoAhorro +
-    rangoDiversion +
-    rangoInversion +
-    rangoDar;
+
+  let porcentajeTotal = sumaPorcentajes(
+    rangoNecesidades,
+    rangoEducacion,
+    rangoAhorro,
+    rangoDiversion,
+    rangoInversion,
+    rangoDar
+  );
 
   //muestra el porcentaje en pantalla al lado del range.
   mostrarPorcentajeTotal.innerHTML = `${porcentajeTotal} %`;
@@ -75,13 +65,14 @@ const tomarPorcentajes = () => {
   let rangoInversion = Number(document.querySelector("#rangeInversion").value);
   let rangoDar = Number(document.querySelector("#rangeDar").value);
 
-  let porcentajeTotal =
-    rangoNecesidades +
-    rangoEducacion +
-    rangoAhorro +
-    rangoDiversion +
-    rangoInversion +
-    rangoDar;
+  let porcentajeTotal = sumaPorcentajes(
+    rangoNecesidades,
+    rangoEducacion,
+    rangoAhorro,
+    rangoDiversion,
+    rangoInversion,
+    rangoDar
+  );
 
   if (porcentajeTotal > 100) {
     alertError("La suma de porcentajes debe ser 100%");
@@ -106,13 +97,14 @@ const guardarPorcentajes = (e) => {
   let rangoInversion = Number(document.querySelector("#rangeInversion").value);
   let rangoDar = Number(document.querySelector("#rangeDar").value);
 
-  let porcentajeTotal =
-    rangoNecesidades +
-    rangoEducacion +
-    rangoAhorro +
-    rangoDiversion +
-    rangoInversion +
-    rangoDar;
+  let porcentajeTotal = sumaPorcentajes(
+    rangoNecesidades,
+    rangoEducacion,
+    rangoAhorro,
+    rangoDiversion,
+    rangoInversion,
+    rangoDar
+  );
 
   if (porcentajeTotal == 100) {
     jarrones[0].porcentaje = rangoNecesidades;

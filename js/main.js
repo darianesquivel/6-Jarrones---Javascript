@@ -29,25 +29,6 @@ const imprimirDolar = (data = null) => {
   } / VENTA : ${data ? data.venta : "<i class='fas fa-spinner'></i>"}</p>`;
 };
 
-// para las alertas de error
-const alertError = (valor) => {
-  Swal.fire({
-    icon: "error",
-    title: "Oops...",
-    text: `${valor}`,
-  });
-};
-
-// para lar alertas success
-const alertSucc = (valor) => {
-  Swal.fire({
-    icon: "success",
-    title: `${valor}`,
-    showConfirmButton: false,
-    timer: 1500,
-  });
-};
-
 // funcion guardarIngreso, tiene todas las validaciones para ingresar un ingreso, y repartirlo en los distintos jarrones segun su porcentaje
 const guardarIngreso = (e) => {
   e.preventDefault(); // hace que no se refresque la pagina cada vez que apretamos el submit del formulario
@@ -258,29 +239,6 @@ const imprimirJarrones = (valor, indice) => {
   </div>
   </div> `;
 };
-
-const borrarTodo = () => {
-  Swal.fire({
-    title: "Estas seguro/a?",
-    text: "No puedes revertir esto!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Si, Borrar todo!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      localStorage.clear();
-      reload();
-    }
-  });
-};
-
-const reload = () => {
-  location.reload();
-};
-
-document.querySelector("#borrarTodo").addEventListener("click", borrarTodo);
 
 // animaciones
 
