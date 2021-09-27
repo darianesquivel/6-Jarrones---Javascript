@@ -183,7 +183,7 @@ const imprimirIngresos = () => {
     if (indice > 9) {
       return;
     }
-    htmlListaIngreso += `<p class="alert alert-secondary" role="alert">Fecha : ${valor.fechaIngreso} Descripcion : ${valor.descIngreso}  Monto: $${valor.montoIngreso} `;
+    htmlListaIngreso += `<p class="alert alert-secondary d-flex flex-column justify-center" role="alert">${valor.fechaIngreso} Desc: ${valor.descIngreso} $${valor.montoIngreso}  </p>`;
   });
   listaIngreso.innerHTML = htmlListaIngreso;
 };
@@ -228,9 +228,9 @@ const imprimirGastos = () => {
     if (indice > 9) {
       return;
     }
-    htmlListaGasto += `<p  class="${clase}" role="alert"> Fecha : ${
+    htmlListaGasto += `<p  class="${clase}" role="alert"> ${
       valor.fechaGasto
-    } Descripcion : ${valor.descGasto}  Monto: $${valor.montoGasto}  Jarron: ${
+    } Desc: ${valor.descGasto} $${valor.montoGasto} Jarron: ${
       jarrones[valor.jarron].nombre
     }</p> `;
   });
@@ -258,6 +258,29 @@ const imprimirJarrones = (valor, indice) => {
   </div>
   </div> `;
 };
+
+const borrarTodo = () => {
+  Swal.fire({
+    title: "Estas seguro/a?",
+    text: "No puedes revertir esto!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, Borrar todo!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      localStorage.clear();
+      reload();
+    }
+  });
+};
+
+const reload = () => {
+  location.reload();
+};
+
+document.querySelector("#borrarTodo").addEventListener("click", borrarTodo);
 
 // animaciones
 

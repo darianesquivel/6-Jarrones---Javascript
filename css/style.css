@@ -37,13 +37,26 @@ header {
   text-align: center;
   justify-content: center;
   gap: 5px;
+  margin-bottom: 5px;
 }
 
 .boton {
-  width: 110px;
+  width: 80px;
   height: 45px;
   border-radius: 5px;
   background-color: rgb(7, 82, 143);
+  border: none;
+  color: white;
+  font-weight: 800;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.botonred {
+  width: 80px;
+  height: 45px;
+  border-radius: 5px;
+  background-color: rgb(201, 57, 13);
   border: none;
   color: white;
   font-weight: 800;
@@ -100,6 +113,7 @@ header {
 
 .btn-close {
   background-color: rgb(7, 82, 143);
+  opacity: 1;
 }
 
 /* INPUT */
@@ -225,6 +239,12 @@ header {
   font-size: 0.8rem;
 }
 /* LIST */
+.fa-trash-alt {
+  width: 10px;
+}
+.fa-trash-alt:hover {
+  color: rgb(255, 4, 4);
+}
 
 #paraListas {
   width: 60%;
